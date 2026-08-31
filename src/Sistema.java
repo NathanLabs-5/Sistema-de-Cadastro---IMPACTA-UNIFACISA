@@ -10,9 +10,7 @@ public class Sistema {
     }
 
     public Boolean CadastrarVoluntarios(Voluntarios voluntarios){
-
         alunos.add(voluntarios);
-
         return true;
     }
 
