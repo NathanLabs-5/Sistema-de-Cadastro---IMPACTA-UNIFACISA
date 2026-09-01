@@ -1,3 +1,5 @@
+package impacta;
+
 public class Voluntario {
 
     private String nome;

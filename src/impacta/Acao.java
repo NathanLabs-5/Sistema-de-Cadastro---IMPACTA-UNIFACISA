@@ -1,19 +1,20 @@
+package impacta;
+
 import java.time.LocalDateTime;
 
 public abstract class Acao {
-
     private int id;
     private String titulo;
     private String descricao;
     private LocalDateTime data;
-    private int Participantesmaximo;
+    private int participantesmaximo;
 
     public Acao(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
-        this.Participantesmaximo = maxParticipantes;
+        this.participantesmaximo = maxParticipantes;
     }
 
     public int getId() {
@@ -32,8 +33,10 @@ public abstract class Acao {
         return data;
     }
 
-    public int getMaxParticipantes() {
-        return Participantesmaximo;
+    public int getParticipantesmaximo() {
+        return participantesmaximo;
     }
+
+    public abstract int calcularPontuacao();
 
 }
