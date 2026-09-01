@@ -15,5 +15,22 @@ public class Sistema {
         return true;
     }
 
+    public Voluntarios listarVoluntariosOrdemDecrescente(){
+
+        for(Voluntarios aluno: alunos){
+            if(aluno instanceof Plantio){
+                System.out.println(aluno);
+
+            }if(aluno instanceof Oficina){
+                System.out.println(aluno);
+
+            }if(aluno instanceof Mutirao) {
+                System.out.println(aluno);
+            }
+            System.out.println("Voluntario não encontrado!");
+        }
+
+        return null;
+    }
 
 }
