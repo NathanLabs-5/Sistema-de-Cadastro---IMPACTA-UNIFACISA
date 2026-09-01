@@ -3,12 +3,14 @@ public class Voluntarios {
     private String nome;
     private String email;
     private int matricula;
+    private Acao acao;
 
 
-    Voluntarios(String nome, String email, int matricula){
+    Voluntarios(String nome, String email, int matricula, Acao acao){
         this.nome = nome;
         this.email = email;
         this.matricula = matricula;
+        this.acao = acao;
     }
 
     public String getNome() {
@@ -23,5 +25,8 @@ public class Voluntarios {
         return matricula;
     }
 
+    public Acao getAcao(){
+        return acao;
+    }
 
 }
