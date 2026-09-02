@@ -17,7 +17,7 @@ public class PontuacaoTeste {
 
     @BeforeEach
     public void setUp() {
-        LocalDateTime data = LocalDateTime.of(2026, 9, 20, 8, 0);
+        LocalDateTime data = LocalDateTime.of(2030, 12, 20, 10, 0);
 
         plantio = new Plantio(1, "Plantio", "Plantio de mudas", data, 10, 10);
         mutirao = new Mutirao(2, "Mutirão", "Coleta de materiais", data, 15, 3);
@@ -27,14 +27,12 @@ public class PontuacaoTeste {
     @Test
     @DisplayName("Deve calcular a pontuação do plantio")
     public void deveCalcularPontuacaoPlantio() {
-
         int resultado = plantio.calcularPontuacao();
-
         assertEquals(25, resultado);
     }
 
     @Test
-    @DisplayName("Deve calcular a pontuação do mutirão")
+    @DisplayName("Deve calcular a pontuação mutirão")
     public void deveCalcularPontuacaoMutirao() {
         int resultado = mutirao.calcularPontuacao();
         assertEquals(12, resultado);
