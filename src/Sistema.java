@@ -1,24 +1,23 @@
+import exceptions.DoubleEmailError;
+
 import java.util.ArrayList;
+import java.util.zip.DataFormatException;
 
 
 public class Sistema {
 
-    ArrayList<Voluntarios> alunos;
+    ArrayList<Voluntarios> alunos = new ArrayList<>();
 
 
-    public Sistema(ArrayList<Voluntarios> alunos) {
-        this.alunos = alunos;
-    }
+    public Boolean CadastrarVoluntarios(Voluntarios voluntarios) throws DoubleEmailError {
 
-    public Boolean CadastrarVoluntarios(Voluntarios voluntarios){
+        for(Voluntarios pessoas : alunos){
+            if(pessoas.getEmail().equals(voluntarios.getEmail())){
+                throw new DoubleEmailError("ERRO! email duplicado!");
+            }
+        }
         alunos.add(voluntarios);
         return true;
-    }
-
-    public Voluntarios listarVoluntariosOrdemDecrescente(){
-
-
-        return null;
     }
 
 }
