@@ -3,8 +3,8 @@ public class Voluntarios {
     private String nome;
     private String email;
     private int matricula;
+    private int pontuacao;
     private Acao acao;
-
 
     Voluntarios(String nome, String email, int matricula, Acao acao){
         this.nome = nome;
@@ -25,8 +25,11 @@ public class Voluntarios {
         return matricula;
     }
 
+    public int getPontuacao() {
+        return pontuacao;
+    }
+
     public Acao getAcao(){
         return acao;
     }
-
 }

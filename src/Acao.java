@@ -6,14 +6,17 @@ public abstract class Acao {
     private String titulo;
     private String descricao;
     private LocalDateTime data;
-    private int Participantesmaximo;
+    private int maxParticipantes;
 
     public Acao(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
-        this.Participantesmaximo = maxParticipantes;
+        this.maxParticipantes = maxParticipantes;
+    }
+
+    public static void add(Plantio plantio) {
     }
 
     public int getId() {
@@ -32,8 +35,8 @@ public abstract class Acao {
         return data;
     }
 
-    public int getMaxParticipantes() {
-        return Participantesmaximo;
+    public int getmaxParticipantes() {
+        return maxParticipantes;
     }
 
     public abstract int calcularPontuacao();

@@ -3,12 +3,12 @@ import java.time.LocalDateTime;
 public abstract class Oficina extends Acao {
 
     private int duracaoHoras;
-    private Boolean temKit;
+    private Boolean kitMaterial;
 
-    Oficina(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, Boolean temKit) {
+    Oficina(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, Boolean kitMaterial) {
         super(id, titulo, descricao, data, maxParticipantes);
         this.duracaoHoras = duracaoHoras;
-        this.temKit = temKit;
+        this.kitMaterial = kitMaterial;
 
     }
 
@@ -16,8 +16,8 @@ public abstract class Oficina extends Acao {
         return duracaoHoras;
     }
 
-    public Boolean getTemKit() {
-        return temKit;
+    public Boolean getkitMaterial() {
+        return kitMaterial;
 
     }
 
@@ -25,7 +25,7 @@ public abstract class Oficina extends Acao {
     public int calcularPontuacao() {
         int calculo = duracaoHoras * 3;
 
-        if (temKit) {
+        if (kitMaterial) {
             return calculo + 10;
         }
 
