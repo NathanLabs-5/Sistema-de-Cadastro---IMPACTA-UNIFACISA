@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import exceptions.DoubleEmailError;
 
 public class Sistema {
 
@@ -17,8 +18,15 @@ public class Sistema {
         this.alunos = new HashSet<>();
     }
 
-    public Boolean CadastrarVoluntarios(Voluntarios voluntarios) {
-        return alunos.add(voluntarios);
+    public Boolean CadastrarVoluntarios(Voluntarios voluntarios) throws DoubleEmailError {
+
+        for(Voluntarios pessoas : alunos){
+            if(pessoas.getEmail().equals(voluntarios.getEmail())){
+                throw new DoubleEmailError("ERRO! email duplicado!");
+            }
+        }
+        alunos.add(voluntarios);
+        return true;
     }
 
     public List<Voluntarios> listarVoluntariosOrdemDecrescente() {
