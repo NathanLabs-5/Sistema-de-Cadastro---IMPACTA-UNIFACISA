@@ -1,3 +1,5 @@
+package work;
+
 public class Voluntarios {
 
     private String nome;
