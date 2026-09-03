@@ -1,3 +1,5 @@
+package work;
+
 import java.time.LocalDateTime;
 
 public abstract class Acao {

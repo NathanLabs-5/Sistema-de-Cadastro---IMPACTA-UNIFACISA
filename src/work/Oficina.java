@@ -1,11 +1,13 @@
+package work;
+
 import java.time.LocalDateTime;
 
-public abstract class Oficina extends Acao {
+public class Oficina extends Acao {
 
     private int duracaoHoras;
-    private Boolean kitMaterial;
+    private boolean kitMaterial;
 
-    Oficina(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, Boolean kitMaterial) {
+    public Oficina(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, Boolean kitMaterial) {
         super(id, titulo, descricao, data, maxParticipantes);
         this.duracaoHoras = duracaoHoras;
         this.kitMaterial = kitMaterial;

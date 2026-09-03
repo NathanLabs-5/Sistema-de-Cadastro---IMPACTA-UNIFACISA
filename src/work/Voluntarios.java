@@ -1,16 +1,19 @@
+package work;
+
 public class Voluntarios {
 
     private String nome;
     private String email;
     private int matricula;
+    private int quantidadeAcoes;
     private int pontuacao;
-    private Acao acao;
 
     Voluntarios(String nome, String email, int matricula, Acao acao){
         this.nome = nome;
         this.email = email;
         this.matricula = matricula;
-        this.acao = acao;
+        this.quantidadeAcoes = 0;
+        this.pontuacao = 0;
     }
 
     public String getNome() {
@@ -29,7 +32,12 @@ public class Voluntarios {
         return pontuacao;
     }
 
-    public Acao getAcao(){
-        return acao;
+    public int getQuantidadeAcoes() {return quantidadeAcoes;}
+
+    public int getpontuacao() {return pontuacao;}
+
+    public void registrarParticipacao(int pontosDaAcao) {
+        quantidadeAcoes++;
+        pontuacao += pontosDaAcao;
     }
 }
