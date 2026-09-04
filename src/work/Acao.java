@@ -18,9 +18,6 @@ public abstract class Acao {
         this.maxParticipantes = maxParticipantes;
     }
 
-    public static void add(Plantio plantio) {
-    }
-
     public int getId() {
         return id;
     }

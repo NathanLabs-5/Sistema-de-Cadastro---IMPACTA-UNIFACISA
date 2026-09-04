@@ -35,7 +35,7 @@ public class PontuacaoTeste {
     }
 
     @Test
-    @DisplayName("Deve calcular a pontuação mutirão")
+    @DisplayName("Deve calcular a pontuação do mutirão")
     public void deveCalcularPontuacaoMutirao() {
         int resultado = mutirao.calcularPontuacao();
         assertEquals(12, resultado);

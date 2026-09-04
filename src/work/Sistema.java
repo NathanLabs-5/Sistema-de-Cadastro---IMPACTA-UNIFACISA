@@ -6,19 +6,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import exceptions.DontDoubleSubscriveForPeople;
-import exceptions.DoubleEmailError;
+import exceptions.InscricaoDuplicadaException;
+import exceptions.EmailDuplicadoException;
 
 public class Sistema {
 
     private Set<Voluntario> alunos = new HashSet<>();
     private Set<Acao> atividades = new HashSet<>();
 
-    public Boolean CadastrarVoluntarios(Voluntario voluntario) throws DoubleEmailError {
+    public Boolean CadastrarVoluntarios(Voluntario voluntario) throws EmailDuplicadoException {
 
         for(Voluntario pessoas : alunos){
             if(pessoas.getEmail().equals(voluntario.getEmail())){
-                throw new DoubleEmailError("ERRO! email duplicado!");
+                throw new EmailDuplicadoException("ERRO! email duplicado!");
             }
         }
         alunos.add(voluntario);
@@ -56,11 +56,11 @@ public class Sistema {
     }
 
 
-    public int cadastrarPlantio(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int quantidadeMudas) throws DontDoubleSubscriveForPeople {
+    public int cadastrarPlantio(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int quantidadeMudas) throws InscricaoDuplicadaException {
 
         for (Acao acao : atividades) {
             if (acao.getId() == id) {
-                throw new DontDoubleSubscriveForPeople("ERRO! NÃO É PERMITIDO MESMO USUARIO INSCREVER-SE NA MESMA MODALIDADE!");
+                throw new InscricaoDuplicadaException("ERRO! NÃO É PERMITIDO MESMO USUARIO INSCREVER-SE NA MESMA MODALIDADE!");
             }
         }
         Acao plantio = new Plantio(id, titulo, descricao, data, maxParticipantes, quantidadeMudas);
@@ -69,15 +69,28 @@ public class Sistema {
 
     }
 
-    public int cadastrarMutirao(int id,String titulo, LocalDateTime descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras){
+    public int cadastrarMutirao(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras) throws InscricaoDuplicadaException {
+
+        for (Acao acao : atividades) {
+            if (acao.getId() == id) {
+                throw new InscricaoDuplicadaException("ERRO! Já existe uma ação cadastrada com esse ID!");
+            }
+        }
         Mutirao mutirao = new Mutirao(id, titulo, descricao, data, maxParticipantes, duracaoHoras);
         atividades.add(mutirao);
         return mutirao.getId();
-
     }
 
-    public int cadastrarOficina(String titulo, String descricao, String data, int maxParticipantes, int duracaoHoras, boolean kitMaterial){
+    public int cadastrarOficina(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, boolean kitMaterial) throws InscricaoDuplicadaException {
 
+        for (Acao acao : atividades) {
+            if (acao.getId() == id) {
+                throw new InscricaoDuplicadaException("ERRO! Já existe uma ação cadastrada com esse ID!");
+            }
+        }
+        Oficina oficina = new Oficina(id, titulo, descricao, data, maxParticipantes, duracaoHoras, kitMaterial);
+        atividades.add(oficina);
+        return oficina.getId();
     }
 
     public boolean inscreverVoluntario(String emailVoluntario, int id){
