@@ -1,14 +1,14 @@
 package work;
 
-public class Voluntarios {
+public class Voluntario {
 
     private String nome;
     private String email;
-    private int matricula;
+    private String matricula;
     private int quantidadeAcoes;
     private int pontuacao;
 
-    Voluntarios(String nome, String email, int matricula, Acao acao){
+    public Voluntario(String nome, String email, String matricula, Acao acao){
         this.nome = nome;
         this.email = email;
         this.matricula = matricula;
@@ -24,7 +24,7 @@ public class Voluntarios {
         return email;
     }
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
@@ -33,8 +33,6 @@ public class Voluntarios {
     }
 
     public int getQuantidadeAcoes() {return quantidadeAcoes;}
-
-    public int getpontuacao() {return pontuacao;}
 
     public void registrarParticipacao(int pontosDaAcao) {
         quantidadeAcoes++;
