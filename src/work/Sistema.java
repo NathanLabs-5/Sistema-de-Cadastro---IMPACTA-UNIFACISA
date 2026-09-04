@@ -29,28 +29,34 @@ public class Sistema {
 
     public List<Voluntarios> listarVoluntariosOrdemDecrescente() {
 
-        List<Voluntarios> ranking = new ArrayList<>(alunos);
-        List<Voluntarios> resultado = new ArrayList<>();
+        List<Voluntarios> listaInicialDePessoas = new ArrayList<>(alunos);
+        List<Voluntarios> rankingFinal = new ArrayList<>();
 
-        for(int i = 0; i < ranking.size();i++){
-            Voluntarios maior = null;
+        for(int i = 0; i < listaInicialDePessoas.size();i++){
+            Voluntarios maiorVoluntario = null;
 
 
-            for(Voluntarios pessoas : ranking){
+            for(Voluntarios pessoas : listaInicialDePessoas){
 
-                if (resultado.contains(pessoas)) {
+                if (rankingFinal.contains(pessoas)) {
                     continue;
                 }
 
-                if(maior == null || pessoas.getPontuacao() > maior.getPontuacao()){
-                    maior = pessoas;
+                if(maiorVoluntario == null || pessoas.getPontuacao() > maiorVoluntario.getPontuacao()){
+                    maiorVoluntario = pessoas;
 
+                    if(maiorVoluntario.getPontuacao() == pessoas.getPontuacao()){
+
+                        if(pessoas.getNome().compareTo(maiorVoluntario.getNome()) < 0){
+                            maiorVoluntario = pessoas;
+                        }
+                    }
                 }
 
             }
-            resultado.add(maior);
+            rankingFinal.add(maiorVoluntario);
         }
-        return resultado;
+        return rankingFinal;
     }
 
 
