@@ -1,14 +1,15 @@
 package Testes;
 
 import org.junit.jupiter.api.BeforeEach;
-import work.Voluntarios;
+import work.Voluntario;
 
 public class Voluntarios_testes {
 
-    private Voluntarios voluntarios;
+    public Voluntario voluntario;
 
     @BeforeEach
     public void setUp(){
 
     }
+
 }
