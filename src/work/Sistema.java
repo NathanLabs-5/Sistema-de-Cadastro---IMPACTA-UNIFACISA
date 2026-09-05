@@ -58,7 +58,7 @@ public class Sistema {
 
         for (Acao acao : atividades) {
             if (acao.getId() == id) {
-                throw new InscricaoDuplicadaException("ERRO! NÃO É PERMITIDO MESMO USUARIO INSCREVER-SE NA MESMA MODALIDADE!");
+                throw new InscricaoDuplicadaException("Já existe uma ação cadastrada com esse ID!");
             }
         }
         Acao plantio = new Plantio(id, titulo, descricao, data, maxParticipantes, quantidadeMudas);
@@ -94,7 +94,11 @@ public class Sistema {
     public boolean inscreverVoluntario(String emailVoluntario, int id){
         for (Acao acao : atividades) {
             if (acao.getId() == id) {
+<<<<<<< HEAD
                 return acao.calcularPontuacao(emailVoluntario);
+=======
+                return acao.calcularPontuacao();
+>>>>>>> 9aa7d656b19c33395b62784dbf714e6c891919ff
             }
         }
         return false;

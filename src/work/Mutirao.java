@@ -17,7 +17,13 @@ public class Mutirao extends Acao {
     }
 
     @Override
-    public boolean calcularPontuacao(String emailVoluntario) {
+    public int calcularPontuacao() {
         return 4 * duracaoHoras;
+    }
+
+    @Override
+    public String toString() {
+        return "Mutirao\n" +
+                "duracaoHoras: " + duracaoHoras ;
     }
 }

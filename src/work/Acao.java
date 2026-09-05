@@ -38,6 +38,16 @@ public abstract class Acao {
         return maxParticipantes;
     }
 
-    public abstract boolean calcularPontuacao(String emailVoluntario);
+    public abstract int calcularPontuacao();
 
+    @Override
+    public String toString() {
+        return "Acao\n" +
+                "id: " + id +
+                ", titulo: " + titulo + '\'' +
+                ", descricao: " + descricao + '\'' +
+                ", data: " + data +
+                ", maxParticipantes: " + maxParticipantes +
+                '}';
+    }
 }
