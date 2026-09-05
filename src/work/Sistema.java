@@ -101,9 +101,6 @@ public class Sistema {
 
     }
 
-
-
-
     public String exibirDetalhesAcao(int id){
         for (Acao acao : atividades){
             if (acao.getId() == id){
