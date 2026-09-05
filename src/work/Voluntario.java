@@ -8,7 +8,7 @@ public class Voluntario {
     private int quantidadeAcoes;
     private int pontuacao;
 
-    public Voluntario(String nome, String email, String matricula, Acao acao){
+    public Voluntario(String nome, String email, String matricula,int quantidadeAcoes, int pontuacao){
         this.nome = nome;
         this.email = email;
         this.matricula = matricula;
