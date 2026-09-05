@@ -92,8 +92,17 @@ public class Sistema {
     }
 
     public boolean inscreverVoluntario(String emailVoluntario, int id){
+        for (Acao acao : atividades) {
+            if (acao.getId() == id) {
+                return acao.calcularPontuacao( emailVoluntario);
+            }
+        }
         return false;
+
     }
+
+
+
 
     public String exibirDetalhesAcao(int id){
         for (Acao acao : atividades){

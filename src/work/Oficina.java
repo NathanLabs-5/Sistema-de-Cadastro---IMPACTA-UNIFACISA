@@ -24,7 +24,7 @@ public class Oficina extends Acao {
     }
 
     @Override
-    public int calcularPontuacao() {
+    public boolean calcularPontuacao(String emailVoluntario) {
         int calculo = duracaoHoras * 3;
 
         if (kitMaterial) {

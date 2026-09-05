@@ -30,21 +30,21 @@ public class PontuacaoTeste {
     @Test
     @DisplayName("Deve calcular a pontuação do plantio")
     public void deveCalcularPontuacaoPlantio() {
-        int resultado = plantio.calcularPontuacao();
+        int resultado = plantio.calcularPontuacao(emailVoluntario);
         assertEquals(25, resultado);
     }
 
     @Test
     @DisplayName("Deve calcular a pontuação do mutirão")
     public void deveCalcularPontuacaoMutirao() {
-        int resultado = mutirao.calcularPontuacao();
+        int resultado = mutirao.calcularPontuacao(emailVoluntario);
         assertEquals(12, resultado);
     }
 
     @Test
     @DisplayName("Deve calcular a pontuação da oficina")
     public void deveCalcularPontuacaoOficina() {
-        int resultado = oficina.calcularPontuacao();
+        int resultado = oficina.calcularPontuacao(emailVoluntario);
         assertEquals(16, resultado);
     }
 }
