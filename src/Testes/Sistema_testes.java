@@ -22,8 +22,8 @@ public class Sistema_testes {
     public void setUp(){
          sistema = new Sistema();
 
-        voluntario1 = new Voluntario("Carlos", "carlos@email.com", "001",0,13);
-        voluntario2 = new Voluntario("Joao", "joao@email.com", "002",0,24);
+        voluntario1 = new Voluntario("Carlos", "carlos@email.com", "001");
+        voluntario2 = new Voluntario("Joao", "joao@email.com", "002");
 
     }
 
@@ -31,7 +31,7 @@ public class Sistema_testes {
     @DisplayName("CadastroDeUsuarios")
     public void deveCadastrarUsuarios()throws Exception{
 
-        boolean resultado = sistema.CadastrarVoluntarios(voluntario1);
+        boolean resultado = sistema.cadastrarVoluntario(voluntario1);
         assertTrue(resultado);
     }
 

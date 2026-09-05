@@ -1,6 +1,8 @@
 package work;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Acao {
 
@@ -9,6 +11,8 @@ public abstract class Acao {
     private String descricao;
     private LocalDateTime data;
     private int maxParticipantes;
+
+    private Set<Voluntario> participantes = new HashSet<>();
 
     public Acao(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
         this.id = id;
@@ -40,14 +44,19 @@ public abstract class Acao {
 
     public abstract int calcularPontuacao();
 
+    public Set<Voluntario> getParticipantes() {
+        return participantes;
+    }
+
     @Override
     public String toString() {
         return "Acao\n" +
                 "id: " + id +
-                ", titulo: " + titulo + '\'' +
-                ", descricao: " + descricao + '\'' +
-                ", data: " + data +
-                ", maxParticipantes: " + maxParticipantes +
-                '}';
+                "\ntitulo: " + titulo +
+                "\ndescricao: " + descricao +
+                "\ndata: " + data +
+                "\nmaxParticipantes: " + maxParticipantes +
+                "\npontuacao: " + calcularPontuacao() +
+                "\nparticipantes: " + participantes;
     }
 }

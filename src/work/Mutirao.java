@@ -23,7 +23,7 @@ public class Mutirao extends Acao {
 
     @Override
     public String toString() {
-        return "Mutirao\n" +
+        return super.toString() + "Mutirao\n" +
                 "duracaoHoras: " + duracaoHoras ;
     }
 }

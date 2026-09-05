@@ -22,7 +22,7 @@ public class Plantio extends Acao {
 
     @Override
     public String toString() {
-        return "Plantio\n" +
+        return super.toString() + "Plantio\n" +
                 "quantidadeMudas: " + quantidadeMudas;
     }
 }

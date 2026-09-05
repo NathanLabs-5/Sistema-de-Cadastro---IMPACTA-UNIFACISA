@@ -7,7 +7,7 @@ public class Oficina extends Acao {
     private int duracaoHoras;
     private boolean kitMaterial;
 
-    public Oficina(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, Boolean kitMaterial) {
+    public Oficina(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, boolean kitMaterial) {
         super(id, titulo, descricao, data, maxParticipantes);
         this.duracaoHoras = duracaoHoras;
         this.kitMaterial = kitMaterial;
@@ -36,7 +36,7 @@ public class Oficina extends Acao {
 
     @Override
     public String toString() {
-        return "Oficina\n" +
+        return super.toString() + "Oficina\n" +
                 "duracaoHoras: " + duracaoHoras +
                 ", kitMaterial: " + kitMaterial;
     }
