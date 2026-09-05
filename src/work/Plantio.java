@@ -16,7 +16,7 @@ public class Plantio extends Acao {
     }
 
     @Override
-    public int calcularPontuacao() {
+    public boolean calcularPontuacao(String emailVoluntario) {
         return 5 + (2 * quantidadeMudas);
     }
 }
