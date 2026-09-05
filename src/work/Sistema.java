@@ -95,8 +95,15 @@ public class Sistema {
         return false;
     }
 
-    public int exibirDetalhesAcao(int id){
-        return 0;
+    public String exibirDetalhesAcao(int id){
+        for (Acao acao : atividades){
+            if (acao.getId() == id){
+                return acao.toString();
+            }
+        }
+        return "Ação não encontrada.";
     }
 
 }
+
+
