@@ -31,6 +31,7 @@ public class PontuacaoTeste {
     @DisplayName("Deve calcular a pontuação do plantio")
     public void deveCalcularPontuacaoPlantio() {
         int resultado = plantio.calcularPontuacao();
+
         assertEquals(25, resultado);
     }
 
@@ -38,6 +39,7 @@ public class PontuacaoTeste {
     @DisplayName("Deve calcular a pontuação do mutirão")
     public void deveCalcularPontuacaoMutirao() {
         int resultado = mutirao.calcularPontuacao();
+
         assertEquals(12, resultado);
     }
 
@@ -45,6 +47,7 @@ public class PontuacaoTeste {
     @DisplayName("Deve calcular a pontuação da oficina")
     public void deveCalcularPontuacaoOficina() {
         int resultado = oficina.calcularPontuacao();
+
         assertEquals(16, resultado);
     }
 }

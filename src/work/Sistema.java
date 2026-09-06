@@ -13,7 +13,8 @@ public class Sistema {
     private Set<Voluntario> alunos = new HashSet<>();
     private Set<Acao> atividades = new HashSet<>();
 
-    public boolean cadastrarVoluntario(String nome, String email, String matricula) throws EmailDuplicadoException {
+    public boolean cadastrarVoluntario(String nome, String email, String matricula)
+            throws EmailDuplicadoException {
 
         for (Voluntario pessoas : alunos) {
             if (pessoas.getEmail().equals(email)) {
@@ -22,6 +23,18 @@ public class Sistema {
         }
 
         Voluntario voluntario = new Voluntario(nome, email, matricula);
+
+        alunos.add(voluntario);
+        return true;
+    }
+    public boolean cadastrarVoluntario(Voluntario voluntario)
+            throws EmailDuplicadoException {
+
+        for (Voluntario pessoa : alunos) {
+            if (pessoa.getEmail().equals(voluntario.getEmail())) {
+                throw new EmailDuplicadoException("ERRO! email duplicado!");
+            }
+        }
 
         alunos.add(voluntario);
         return true;
@@ -73,11 +86,14 @@ public class Sistema {
 
         for (Acao acao : atividades) {
             if (acao.getId() == id) {
-                throw new InscricaoDuplicadaException("Já existe uma ação cadastrada com esse ID!");
+                throw new InscricaoDuplicadaException(
+                        "Já existe uma ação cadastrada com esse ID!");
             }
         }
 
-        Acao plantio = new Plantio(id, titulo, descricao, data, maxParticipantes, quantidadeMudas);
+        Acao plantio = new Plantio(
+                id, titulo, descricao, data, maxParticipantes, quantidadeMudas);
+
         atividades.add(plantio);
 
         return plantio.getId();
@@ -89,11 +105,14 @@ public class Sistema {
 
         for (Acao acao : atividades) {
             if (acao.getId() == id) {
-                throw new InscricaoDuplicadaException("ERRO! Já existe uma ação cadastrada com esse ID!");
+                throw new InscricaoDuplicadaException(
+                        "ERRO! Já existe uma ação cadastrada com esse ID!");
             }
         }
 
-        Mutirao mutirao = new Mutirao(id, titulo, descricao, data, maxParticipantes, duracaoHoras);
+        Mutirao mutirao = new Mutirao(
+                id, titulo, descricao, data, maxParticipantes, duracaoHoras);
+
         atividades.add(mutirao);
 
         return mutirao.getId();
@@ -105,11 +124,14 @@ public class Sistema {
 
         for (Acao acao : atividades) {
             if (acao.getId() == id) {
-                throw new InscricaoDuplicadaException("ERRO! Já existe uma ação cadastrada com esse ID!");
+                throw new InscricaoDuplicadaException(
+                        "ERRO! Já existe uma ação cadastrada com esse ID!");
             }
         }
 
-        Oficina oficina = new Oficina(id, titulo, descricao, data, maxParticipantes, duracaoHoras, kitMaterial);
+        Oficina oficina = new Oficina(
+                id, titulo, descricao, data, maxParticipantes, duracaoHoras, kitMaterial);
+
         atividades.add(oficina);
 
         return oficina.getId();
@@ -143,16 +165,20 @@ public class Sistema {
         }
 
         if (acaoEncontrada.getParticipantes().contains(voluntarioEncontrado)) {
-            throw new InscricaoDuplicadaException("Voluntário já está inscrito nessa ação!");
+            throw new InscricaoDuplicadaException(
+                    "Voluntário já está inscrito nessa ação!");
         }
 
-        if (acaoEncontrada.getParticipantes().size() >= acaoEncontrada.getmaxParticipantes()) {
+        if (acaoEncontrada.getParticipantes().size()
+                >= acaoEncontrada.getmaxParticipantes()) {
+
             throw new AcaoLotada("Ação lotada!");
         }
 
         acaoEncontrada.getParticipantes().add(voluntarioEncontrado);
 
         int pontos = acaoEncontrada.calcularPontuacao();
+
         voluntarioEncontrado.registrarParticipacao(pontos);
 
         return true;

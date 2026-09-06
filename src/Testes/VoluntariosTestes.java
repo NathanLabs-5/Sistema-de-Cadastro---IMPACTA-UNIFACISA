@@ -7,24 +7,36 @@ import work.Sistema;
 import work.Voluntario;
 import exceptions.EmailDuplicadoException;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class VoluntariosTestes {
 
     private Sistema sistema;
 
+    private Voluntario julia;
+    private Voluntario bruno;
+    private Voluntario carla;
+
     @BeforeEach
     public void setUp() {
         sistema = new Sistema();
+
+        julia = new Voluntario("Julia", "ana@gmail.com", "1");
+        bruno = new Voluntario("Bruno", "bruno@gmail.com", "2");
+        carla = new Voluntario("Carla", "carla@gmail.com", "3");
     }
 
     @Test
     @DisplayName("Deve cadastrar voluntário com sucesso")
     public void deveCadastrarVoluntarioComSucesso() {
-        Voluntario v = new Voluntario("Bianca", "bianca@gmail.com", "2023001");
-        assertTrue(sistema.CadastrarVoluntarios(v));
+        assertEquals(true, sistema.cadastrarVoluntario(
+                "Julia",
+                "ana@gmail.com",
+                "1"
+        ));
     }
 
     @Test
@@ -32,9 +44,19 @@ public class VoluntariosTestes {
     public void naoDeveCadastrarEmailDuplicado() {
         Voluntario v1 = new Voluntario("Marluce", "marluce@gmail.com", "2023001");
         Voluntario v2 = new Voluntario("Outra Pessoa", "marluce@gmail.com", "2023002");
-        sistema.CadastrarVoluntarios(v1);
+        sistema.cadastrarVoluntario(
+                v1.getNome(),
+                v1.getEmail(),
+                v1.getMatricula()
+        );
 
-        assertThrows(EmailDuplicadoException.class, () -> sistema.CadastrarVoluntarios(v2));
+        assertThrows(EmailDuplicadoException.class, () ->
+                sistema.cadastrarVoluntario(
+                        v2.getNome(),
+                        v2.getEmail(),
+                        v2.getMatricula()
+                )
+        );
     }
 
     @Test
@@ -49,23 +71,20 @@ public class VoluntariosTestes {
 
     @Test
     @DisplayName("Deve listar voluntários em ordem decrescente de pontuação, com desempate por nome")
-    public void deveListarEmOrdemDecrescente(){
-        Voluntario julia = new Voluntario("Julia", "ana@gmail.com", "1");
-        Voluntario bruno = new Voluntario("Bruno", "bruno@gmail.com", "2");
-        Voluntario carla = new Voluntario("Carla", "carla@gmail.com", "3");
+    public void deveListarEmOrdemDecrescente() {
 
         julia.registrarParticipacao(10);
         bruno.registrarParticipacao(20);
-        carla.registrarParticipacao(20); // empate com Bruno -> desempate alfabético
+        carla.registrarParticipacao(20);
 
-        sistema.CadastrarVoluntarios(julia);
-        sistema.CadastrarVoluntarios(bruno);
-        sistema.CadastrarVoluntarios(carla);
+        sistema.cadastrarVoluntario(julia);
+        sistema.cadastrarVoluntario(bruno);
+        sistema.cadastrarVoluntario(carla);
 
-        List<Voluntario> ranking = sistema.listarVoluntariosOrdemDecrescente();
+        String[] ranking = sistema.listarVoluntarios();
 
-        assertEquals("Bruno", ranking.get(0).getNome());
-        assertEquals("Carla", ranking.get(1).getNome());
-        assertEquals("Julia", ranking.get(2).getNome());
+        assertEquals("Bruno - 1 ações - 20 pontos", ranking[0]);
+        assertEquals("Carla - 1 ações - 20 pontos", ranking[1]);
+        assertEquals("Julia - 1 ações - 10 pontos", ranking[2]);
     }
 }
