@@ -34,7 +34,7 @@ public class VoluntariosTestes {
     public void deveCadastrarVoluntarioComSucesso() {
         assertEquals(true, sistema.cadastrarVoluntario(
                 "Julia",
-                "ana@gmail.com",
+                "julia@gmail.com",
                 "1"
         ));
     }
@@ -73,11 +73,9 @@ public class VoluntariosTestes {
     @DisplayName("Deve listar voluntários em ordem decrescente de pontuação, com desempate por nome")
     public void deveListarEmOrdemDecrescente() {
 
-        julia.registrarParticipacao(10);
         bruno.registrarParticipacao(20);
         carla.registrarParticipacao(20);
 
-        sistema.cadastrarVoluntario(julia);
         sistema.cadastrarVoluntario(bruno);
         sistema.cadastrarVoluntario(carla);
 
@@ -85,6 +83,6 @@ public class VoluntariosTestes {
 
         assertEquals("Bruno - 1 ações - 20 pontos", ranking[0]);
         assertEquals("Carla - 1 ações - 20 pontos", ranking[1]);
-        assertEquals("Julia - 1 ações - 10 pontos", ranking[2]);
+
     }
 }

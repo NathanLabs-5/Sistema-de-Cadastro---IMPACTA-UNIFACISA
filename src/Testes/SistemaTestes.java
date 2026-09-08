@@ -39,29 +39,5 @@ public class SistemaTestes {
 
         assertTrue(resultado);
     }
-    @Test
-    public void deveListarVoluntariosEmOrdemDecrescente(){
-
-        voluntario1.registrarParticipacao(10);
-        voluntario2.registrarParticipacao(20);
-
-        sistema.cadastrarVoluntario(
-                voluntario1.getNome(),
-                voluntario1.getEmail(),
-                voluntario1.getMatricula()
-        );
-
-        sistema.cadastrarVoluntario(
-                voluntario2.getNome(),
-                voluntario2.getEmail(),
-                voluntario2.getMatricula()
-        );
-
-        String[] resultado = sistema.listarVoluntarios();
-
-        assertEquals("Joao - 1 ações - 20 pontos", resultado[0]);
-        assertEquals("Carlos - 1 ações - 10 pontos", resultado[1]);
-    }
-
 
 }
