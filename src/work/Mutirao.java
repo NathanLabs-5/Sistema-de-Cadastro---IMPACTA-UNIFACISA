@@ -7,7 +7,7 @@ public class Mutirao extends Acao {
     private int duracaoHoras;
 
     public Mutirao(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras) {
-        super(id, titulo, descricao, data, maxParticipantes);
+        super(titulo, descricao, data, maxParticipantes);
         this.duracaoHoras = duracaoHoras;
     }
 

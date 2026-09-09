@@ -3,18 +3,16 @@ package Testes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import work.Sistema;
+import work.Impacta;
 import work.Voluntario;
 import exceptions.EmailDuplicadoException;
-
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class VoluntariosTestes {
 
-    private Sistema sistema;
+    private Impacta sistema;
 
     private Voluntario julia;
     private Voluntario bruno;
@@ -22,7 +20,7 @@ public class VoluntariosTestes {
 
     @BeforeEach
     public void setUp() {
-        sistema = new Sistema();
+        sistema = new Impacta();
 
         julia = new Voluntario("Julia", "ana@gmail.com", "1");
         bruno = new Voluntario("Bruno", "bruno@gmail.com", "2");

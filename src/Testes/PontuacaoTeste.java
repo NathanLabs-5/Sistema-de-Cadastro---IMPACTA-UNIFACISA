@@ -22,7 +22,7 @@ public class PontuacaoTeste {
     public void setUp() {
         LocalDateTime data = LocalDateTime.of(2030, 12, 20, 10, 0);
 
-        plantio = new Plantio(1, "work.Plantio", "work.Plantio de mudas", data, 10, 10);
+        plantio = new Plantio(1, "work.Plantio", data, 10, 10);
         mutirao = new Mutirao(2, "Mutirão", "Coleta de materiais", data, 15, 3);
         oficina = new Oficina(3, "work.Oficina", "Produção sustentável", data, 20, 2, true);
     }

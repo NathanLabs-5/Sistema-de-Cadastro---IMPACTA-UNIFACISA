@@ -5,22 +5,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-import work.Sistema;
+import work.Impacta;
 import work.Voluntario;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SistemaTestes {
 
-    private Sistema sistema;
+    private Impacta sistema;
     private Voluntario voluntario1;
     private Voluntario voluntario2;
 
     @BeforeEach
     public void setUp(){
-         sistema = new Sistema();
+         sistema = new Impacta();
 
         voluntario1 = new Voluntario("Carlos", "carlos@email.com", "001");
         voluntario2 = new Voluntario("Joao", "joao@email.com", "002");

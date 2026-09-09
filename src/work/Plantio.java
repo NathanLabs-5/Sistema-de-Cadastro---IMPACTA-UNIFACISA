@@ -4,25 +4,25 @@ import java.time.LocalDateTime;
 
 public class Plantio extends Acao {
 
-    private int quantidadeMudas;
+    private int qtdMudas;
 
-    public Plantio(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int quantidadeMudas) {
-        super(id, titulo, descricao, data, maxParticipantes);
-        this.quantidadeMudas = quantidadeMudas;
+    public Plantio(String titulo, String descricao, LocalDateTime data, int maxParticipantes, int quantidadeMudas) {
+        super(titulo, descricao, data, maxParticipantes);
+        this.qtdMudas = quantidadeMudas;
     }
 
     public int getQuantidadeMudas() {
-        return quantidadeMudas;
+        return qtdMudas;
     }
 
     @Override
     public int calcularPontuacao() {
-        return 5 + (2 * quantidadeMudas);
+        return 5 + (2 * qtdMudas);
     }
 
     @Override
     public String toString() {
         return super.toString() + "Plantio\n" +
-                "quantidadeMudas: " + quantidadeMudas;
+                "quantidadeMudas: " + qtdMudas;
     }
 }

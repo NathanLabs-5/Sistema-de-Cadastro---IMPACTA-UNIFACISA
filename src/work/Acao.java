@@ -6,7 +6,6 @@ import java.util.Set;
 
 public abstract class Acao {
 
-    private int id;
     private String titulo;
     private String descricao;
     private LocalDateTime data;
@@ -14,17 +13,13 @@ public abstract class Acao {
 
     private Set<Voluntario> participantes = new HashSet<>();
 
-    public Acao(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
-        this.id = id;
+    public Acao(String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
         this.maxParticipantes = maxParticipantes;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getTitulo() {
         return titulo;
@@ -51,7 +46,6 @@ public abstract class Acao {
     @Override
     public String toString() {
         return "Acao\n" +
-                "id: " + id +
                 "\ntitulo: " + titulo +
                 "\ndescricao: " + descricao +
                 "\ndata: " + data +
