@@ -7,11 +7,10 @@ public class Oficina extends Acao {
     private int duracaoHoras;
     private boolean kitMaterial;
 
-    public Oficina(String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, boolean kitMaterial) {
-        super(titulo, descricao, data, maxParticipantes);
+    public Oficina(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int duracaoHoras, boolean kitMaterial) {
+        super(id, titulo, descricao, data, maxParticipantes);
         this.duracaoHoras = duracaoHoras;
         this.kitMaterial = kitMaterial;
-
     }
 
     public int getDuracaoHoras() {

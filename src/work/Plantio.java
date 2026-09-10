@@ -6,8 +6,8 @@ public class Plantio extends Acao {
 
     private int qtdMudas;
 
-    public Plantio(String titulo, String descricao, LocalDateTime data, int maxParticipantes, int quantidadeMudas) {
-        super(titulo, descricao, data, maxParticipantes);
+    public Plantio(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes, int quantidadeMudas) {
+        super(id, titulo, descricao, data, maxParticipantes);
         this.qtdMudas = quantidadeMudas;
     }
 

@@ -13,8 +13,13 @@ public class Impacta {
     private Set<Voluntario> alunos = new HashSet<>();
     private Set<Acao> atividades = new HashSet<>();
 
-    public boolean cadastrarVoluntario(String nome, String email, String matricula)
-            throws EmailDuplicadoException {
+    private int proximoIdAcao= 1;
+
+    private int gerarIdAcao(){
+        return proximoIdAcao++;
+    }
+
+    public boolean cadastrarVoluntario(String nome, String email, String matricula) {
 
         for (Voluntario pessoas : alunos) {
             if (pessoas.getEmail().equals(email)) {
@@ -91,63 +96,48 @@ public class Impacta {
         return lista;
     }
 
-    public int cadastrarPlantio( String titulo, String descricao, LocalDateTime data,
-                                int maxParticipantes, int quantidadeMudas)
-            throws DuplaInscricaoException {
-//ajeitar isso
-        for (Acao acao : atividades) {
-            if (acao.getId() == id) {
-                throw new DuplaInscricaoException(
-                        "Já existe uma ação cadastrada com esse ID!");
-            }
-        }
+    public int cadastrarPlantio(String titulo, String descricao, String data,
+                                int maxParticipantes, int quantidadeMudas) {
 
-        Acao plantio = new Plantio(titulo, descricao, data, maxParticipantes, quantidadeMudas);
+        LocalDateTime dataConvertida = LocalDateTime.parse(data);
+        int id = gerarIdAcao();
+
+        Plantio plantio = new Plantio(id, titulo, descricao, dataConvertida, maxParticipantes, quantidadeMudas);
 
         atividades.add(plantio);
 
         return plantio.getId();
     }
 
-    public int cadastrarMutirao(int id, String titulo, String descricao, LocalDateTime data,
-                                int maxParticipantes, int duracaoHoras)
-            throws DuplaInscricaoException {
+    public int cadastrarMutirao(String titulo, String descricao, String data,
+                                int maxParticipantes, int duracaoHoras) {
 
-        for (Acao acao : atividades) {
-            if (acao.getId() == id) {
-                throw new DuplaInscricaoException(
-                        "ERRO! Já existe uma ação cadastrada com esse ID!");
-            }
-        }
+        LocalDateTime dataConvertida = LocalDateTime.parse(data);
+        int id = gerarIdAcao();
 
         Mutirao mutirao = new Mutirao(
-                id, titulo, descricao, data, maxParticipantes, duracaoHoras);
+                id, titulo, descricao, dataConvertida, maxParticipantes, duracaoHoras);
 
         atividades.add(mutirao);
 
         return mutirao.getId();
     }
 
-    public int cadastrarOficina(int id, String titulo, String descricao, LocalDateTime data,
-                                int maxParticipantes, int duracaoHoras, boolean kitMaterial)
-            throws DuplaInscricaoException {
+    public int cadastrarOficina(String titulo, String descricao, String data,
+                                int maxParticipantes, int duracaoHoras, boolean kitMaterial) {
 
-        for (Acao acao : atividades) {
-            if (acao.getId() == id) {
-                throw new DuplaInscricaoException(
-                        "ERRO! Já existe uma ação cadastrada com esse ID!");
-            }
-        }
+        LocalDateTime dataConvertida = LocalDateTime.parse(data);
+        int id = gerarIdAcao();
 
         Oficina oficina = new Oficina(
-                id, titulo, descricao, data, maxParticipantes, duracaoHoras, kitMaterial);
+                id, titulo, descricao, dataConvertida, maxParticipantes, duracaoHoras, kitMaterial);
 
         atividades.add(oficina);
 
         return oficina.getId();
     }
 
-    public boolean inscreverVoluntario(String emailVoluntario, int id) {
+    public boolean inscreverVoluntario(String emailVoluntario) {
 
         Voluntario voluntarioEncontrado = null;
         Acao acaoEncontrada = null;
@@ -161,13 +151,6 @@ public class Impacta {
 
         if (voluntarioEncontrado == null) {
             throw new UsuarioNaoEncotrado("Voluntário não encontrado!");
-        }
-
-        for (Acao acao : atividades) {
-            if (acao.getId() == id) {
-                acaoEncontrada = acao;
-                break;
-            }
         }
 
         if (acaoEncontrada == null) {
@@ -194,13 +177,7 @@ public class Impacta {
         return true;
     }
 
-    public String exibirDetalhesAcao(int id) {
-
-        for (Acao acao : atividades) {
-            if (acao.getId() == id) {
-                return acao.toString();
-            }
-        }
+    public String exibirDetalhesAcao() {
 
         return "Ação não encontrada.";
     }

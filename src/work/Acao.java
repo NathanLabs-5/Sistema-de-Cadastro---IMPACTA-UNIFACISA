@@ -6,20 +6,26 @@ import java.util.Set;
 
 public abstract class Acao {
 
+    private int id;
     private String titulo;
     private String descricao;
     private LocalDateTime data;
     private int maxParticipantes;
 
+
     private Set<Voluntario> participantes = new HashSet<>();
 
-    public Acao(String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
+    public Acao(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
+        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
         this.maxParticipantes = maxParticipantes;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public String getTitulo() {
         return titulo;
