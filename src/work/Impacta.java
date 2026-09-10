@@ -46,7 +46,7 @@ public class Impacta {
         }
 
         if (voluntarioEncontrado == null) {
-            throw new UsuarioNaoEncotrado("Voluntário não encontrado!");
+            throw new UsuarioNaoEncontrado("Voluntário não encontrado!");
         }
 
         return voluntarioEncontrado.getNome()
@@ -150,11 +150,14 @@ public class Impacta {
         }
 
         if (voluntarioEncontrado == null) {
-            throw new UsuarioNaoEncotrado("Voluntário não encontrado!");
+            throw new UsuarioNaoEncontrado("Voluntário não encontrado!");
         }
 
-        if (acaoEncontrada == null) {
-            throw new AcaoNaoEncontrada("Ação não encontrada");
+        for (Acao acao : atividades) {
+            if (acao.getId() == idAcao) {
+                acaoEncontrada = acao;
+                break;
+            }
         }
 
         if (acaoEncontrada.getParticipantes().contains(voluntarioEncontrado)) {
@@ -163,7 +166,7 @@ public class Impacta {
         }
 
         if (acaoEncontrada.getParticipantes().size()
-                >= acaoEncontrada.getmaxParticipantes()) {
+                >= acaoEncontrada.getMaxParticipantes()) {
 
             throw new AcaoLotadaException("Ação lotada!");
         }

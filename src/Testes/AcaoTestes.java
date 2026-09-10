@@ -27,7 +27,7 @@ public class AcaoTestes {
         assertEquals("Plantio", acao.getTitulo());
         assertEquals("mudas", acao.getDescricao());
         assertEquals(data, acao.getData());
-        assertEquals(20, acao.getmaxParticipantes());
+        assertEquals(20, acao.getMaxParticipantes());
     }
 
     @Test

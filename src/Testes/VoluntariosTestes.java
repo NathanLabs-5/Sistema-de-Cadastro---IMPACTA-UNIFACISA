@@ -30,10 +30,7 @@ public class VoluntariosTestes {
     @Test
     @DisplayName("Deve cadastrar voluntário com sucesso")
     public void deveCadastrarVoluntarioComSucesso() {
-        assertEquals(true, sistema.cadastrarVoluntario(
-                "Julia",
-                "julia@gmail.com",
-                "1"
+        assertEquals(true, sistema.cadastrarVoluntario("Julia", "julia@gmail.com", "1"
         ));
     }
 
@@ -42,14 +39,10 @@ public class VoluntariosTestes {
     public void naoDeveCadastrarEmailDuplicado() {
         Voluntario v1 = new Voluntario("Marluce", "marluce@gmail.com", "2023001");
         Voluntario v2 = new Voluntario("Outra Pessoa", "marluce@gmail.com", "2023002");
-        sistema.cadastrarVoluntario(
-                v1.getNome(),
-                v1.getEmail(),
-                v1.getMatricula()
+        sistema.cadastrarVoluntario(v1.getNome(), v1.getEmail(), v1.getMatricula()
         );
 
-        assertThrows(EmailDuplicadoException.class, () ->
-                sistema.cadastrarVoluntario(
+        assertThrows(EmailDuplicadoException.class, () -> sistema.cadastrarVoluntario(
                         v2.getNome(),
                         v2.getEmail(),
                         v2.getMatricula()
@@ -60,27 +53,28 @@ public class VoluntariosTestes {
     @Test
     @DisplayName("Deve registrar participação e acumular pontuação")
     public void deveRegistrarParticipanteAcumulandoPontos() {
-        Voluntario v = new Voluntario("Mariane", "mariane@gmail.com", "1");
-        v.registrarParticipacao(15);
-        assertEquals(1, v.getQuantidadeAcoes());
-        assertEquals(15, v.getPontuacao());
+        Voluntario voluntario = new Voluntario("Mariane", "mariane@gmail.com", "1");
+        voluntario.registrarParticipacao(15);
+
+        assertEquals(1, voluntario.getQuantidadeAcoes());
+        assertEquals(15, voluntario.getPontuacao());
 
     }
 
     @Test
-    @DisplayName("Deve listar voluntários em ordem decrescente de pontuação, com desempate por nome")
+    @DisplayName("Deve listar em ordem decrescente")
     public void deveListarEmOrdemDecrescente() {
 
-        bruno.registrarParticipacao(20);
-        carla.registrarParticipacao(20);
+        sistema.cadastrarVoluntario(bruno.getNome(), bruno.getEmail(), bruno.getMatricula());
+        sistema.cadastrarVoluntario(carla.getNome(), carla.getEmail(), carla.getMatricula());
+        int idMutirao = sistema.cadastrarMutirao("Mutirão de teste", "Ação utilizada para testar o ranking", "2030-12-20T10:00:00", 2, 5);
 
-        sistema.cadastrarVoluntario(bruno);
-        sistema.cadastrarVoluntario(carla);
+        sistema.inscreverVoluntario(bruno.getEmail(), idMutirao);
+        sistema.inscreverVoluntario(carla.getEmail(), idMutirao);
 
         String[] ranking = sistema.listarVoluntarios();
 
         assertEquals("Bruno - 1 ações - 20 pontos", ranking[0]);
         assertEquals("Carla - 1 ações - 20 pontos", ranking[1]);
-
     }
 }

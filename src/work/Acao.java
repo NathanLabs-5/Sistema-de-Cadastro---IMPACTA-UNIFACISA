@@ -6,7 +6,7 @@ import java.util.Set;
 
 public abstract class Acao {
 
-    private int idAcao;
+    private int id;
     private String titulo;
     private String descricao;
     private LocalDateTime data;
@@ -16,7 +16,7 @@ public abstract class Acao {
     private Set<Voluntario> participantes = new HashSet<>();
 
     public Acao(int idAcao, String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
-        this.idAcao = idAcao;
+        this.id = idAcao;
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
@@ -24,7 +24,7 @@ public abstract class Acao {
     }
 
     public int getId() {
-        return idAcao;
+        return id;
     }
 
     public String getTitulo() {
@@ -39,8 +39,7 @@ public abstract class Acao {
         return data;
     }
 
-    public int getmaxParticipantes() {
-        return maxParticipantes;
+    public int getMaxParticipantes() {return maxParticipantes;
     }
 
     public abstract int calcularPontuacao();

@@ -1,13 +1,14 @@
 package Testes;
 
 import exceptions.AcaoLotadaException;
-import exceptions.DateTimeParseException;
 import exceptions.DuplaInscricaoException;
 import exceptions.EmailDuplicadoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import work.Impacta;
+
+import java.time.format.DateTimeParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
