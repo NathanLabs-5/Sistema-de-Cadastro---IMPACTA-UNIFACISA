@@ -46,13 +46,16 @@ public class Impacta {
         }
 
         if (voluntarioEncontrado == null) {
-            throw new UsuarioNaoEncontrado("Voluntário não encontrado!");
+            return "Voluntário não encontrado.";
         }
 
-        return voluntarioEncontrado.getNome()
-                + "\n" + voluntarioEncontrado.getEmail()
-                + "\n" + voluntarioEncontrado.getPontuacao()
-                + "\n" + voluntarioEncontrado.getQuantidadeAcoes();
+        return "Nome: " + voluntarioEncontrado.getNome()
+                + "\nE-mail: " + voluntarioEncontrado.getEmail()
+                + "\nMatrícula: " + voluntarioEncontrado.getMatricula()
+                + "\nAções Participadas: "
+                + voluntarioEncontrado.getQuantidadeAcoes()
+                + "\nPontuação: "
+                + voluntarioEncontrado.getPontuacao();
     }
 
 
@@ -158,6 +161,10 @@ public class Impacta {
                 acaoEncontrada = acao;
                 break;
             }
+        }
+
+        if (acaoEncontrada == null) {
+            throw new AcaoNaoEncontrada("Ação não encontrada!");
         }
 
         if (acaoEncontrada.getParticipantes().contains(voluntarioEncontrado)) {

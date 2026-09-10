@@ -15,8 +15,8 @@ public abstract class Acao {
 
     private Set<Voluntario> participantes = new HashSet<>();
 
-    public Acao(int idAcao, String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
-        this.id = idAcao;
+    public Acao(int id, String titulo, String descricao, LocalDateTime data, int maxParticipantes) {
+        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;

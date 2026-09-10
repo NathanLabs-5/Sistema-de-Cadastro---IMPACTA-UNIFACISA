@@ -37,7 +37,7 @@ public class ImpactaTest {
 
         sistema.cadastrarVoluntario("João", "joao@email.com", "111");
 
-        sistema.inscreverVoluntario("joao@email.com", idOficinaSemKit);
+        sistema.inscreverVoluntario("joao@email.com", idPlantio);
         sistema.inscreverVoluntario("joao@email.com", idMutirao);
         sistema.inscreverVoluntario("joao@email.com", idOficinaComKit);
         sistema.inscreverVoluntario("joao@email.com", idOficinaSemKit);
