@@ -1,6 +1,6 @@
 package exceptions;
 
-public class AcaoNaoEncontrada extends RuntimeException {
+public class AcaoNaoEncontrada extends IllegalArgumentException {
     public AcaoNaoEncontrada(String message) {
         super(message);
     }

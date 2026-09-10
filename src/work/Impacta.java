@@ -137,7 +137,7 @@ public class Impacta {
         return oficina.getId();
     }
 
-    public boolean inscreverVoluntario(String emailVoluntario) {
+    public boolean inscreverVoluntario(String emailVoluntario, int idAcao) {
 
         Voluntario voluntarioEncontrado = null;
         Acao acaoEncontrada = null;
@@ -177,9 +177,5 @@ public class Impacta {
         return true;
     }
 
-    public String exibirDetalhesAcao() {
-
-        return "Ação não encontrada.";
-    }
 
 }
